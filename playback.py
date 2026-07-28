@@ -25,7 +25,7 @@ DMX_MAB_TIME = 0.000012
 
 RECORDING_DIRECTORY = "dmx_recordings"
 MUSIC_DIRECTORY = "music"
-SETTINGS_FILE = "music/settings.json"
+SETTINGS_FILE = "settings.json"
 
 
 # =========================
@@ -639,6 +639,8 @@ class PlaybackController:
             recordings.append(
                 {
                     "name": filename,
+                    "titel": settings.get("titel", os.path.splitext(filename)[0]),
+                    "description": settings.get("description", ""),
                     "music": (
                         os.path.basename(music)
                         if music

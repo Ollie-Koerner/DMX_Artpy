@@ -31,9 +31,9 @@
                 div.className = "recording";
 
                 div.innerHTML = `
-                    <h2>${recording.name.replace(".jsonl", "")}</h2>
-                    <p>Music: ${recording.music || "None"}</p>
-                    <button onclick="playRecording('${recording.name}')">
+                    <h2>${recording.titel}</h2>
+                    <p>${recording.description || ""}</p>
+                    <button onclick="playRecording('${recording.name}', this)">
                         PLAY
                     </button>
                 `;
