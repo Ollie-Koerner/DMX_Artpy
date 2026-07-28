@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.status {
+    background: #222;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.recording {
+    background: #1d1d1d;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    border-style: solid;
+    border-color: #3db2ff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.stop {
+    width: 100%;
+    background: #e74c3c;
+    margin-top: 20px;
+    border-style: solid;
+    border-color: darkred;
+}
+
+.blackout {
+    width: 100%;
+    margin-top: 10px;
+    background: black;
+    color: white;
+    border-style: solid;
+    border-color: gray;
+}
