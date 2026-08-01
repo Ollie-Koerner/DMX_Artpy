@@ -650,6 +650,10 @@ class PlaybackController:
                 }
             )
 
+        recordings.sort(
+            key=lambda recording: recording["titel"].lower()
+        )
+
         return recordings
 
 

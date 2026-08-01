@@ -6,5 +6,14 @@
         "audio_offset_ms": 14300,
         "dmx_offset_ms": 0,
         "volume": 100
+    },
+
+    "happy_birthday": {
+        "titel": "Happy Birthday",
+        "description": "Happy Birthday - Orchastra",
+        "music": "happy_birthday.mp3",
+        "audio_offset_ms": 1200,
+        "dmx_offset_ms": 0,
+        "volume": 200
     }
 }
