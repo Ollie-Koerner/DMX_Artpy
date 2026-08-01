@@ -52,7 +52,14 @@ class PlaybackController:
 
         self.loaded_records = []
 
-        self.vlc_instance = vlc.Instance()
+        self.vlc_instance = vlc.Instance(
+            "--aout=alsa",
+            "--audio-time-stretch",
+            "--file-caching=2000",
+            "--network-caching=2000",
+            "--disc-caching=2000",
+            "--no-video"
+        )
         self.audio_player = None
 
 
@@ -306,26 +313,53 @@ class PlaybackController:
         if music_file is None:
             return
 
+        print("Preparing audio...")
+
         media = self.vlc_instance.media_new(
-            music_file
+            os.path.abspath(music_file)
         )
 
         self.audio_player = self.vlc_instance.media_player_new()
 
-        self.audio_player.set_media(
-            media
-        )
+        self.audio_player.set_media(media)
 
+        # Force VLC to load metadata and prepare decoder
         self.audio_player.play()
 
+        time.sleep(0.2)
+
+        # Pause immediately after loading
+        self.audio_player.pause()
+
+        # Wait until VLC has initialized
+        timeout = time.time() + 5
+
+        while time.time() < timeout:
+            state = self.audio_player.get_state()
+
+            if state in (
+                vlc.State.Paused,
+                vlc.State.Playing
+            ):
+                break
+
+            time.sleep(0.05)
+
         print(
-            f"Playing music: {music_file}"
+            "Audio preloaded"
         )
+
+
+    def resume_music(self):
+        if self.audio_player:
+            self.audio_player.play()
+            print("Audio started")
 
     def stop_music(self):
         if self.audio_player:
             try:
                 self.audio_player.stop()
+                self.audio_player.release()
             except Exception:
                 pass
 
@@ -438,21 +472,26 @@ class PlaybackController:
                     if remaining <= 0:
                         break
 
-                    if remaining > 2_000_000:
+                    if remaining > 5_000_000:
                         time.sleep(
-                            (remaining - 1_000_000)
-                            /
-                            1_000_000_000
+                            remaining / 1_000_000_000 / 2
                         )
+
+                    else:
+                        time.sleep(0.0005)
 
 
             if music_file:
+                print("Loading music before show")
+
+                self.start_music(
+                    music_file
+                )
+
                 def music_worker():
                     wait_until(music_start)
                     if not self.stop_event.is_set():
-                        self.start_music(
-                            music_file
-                        )
+                        self.resume_music()
 
                 threading.Thread(
                     target=music_worker,
