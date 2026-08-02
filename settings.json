@@ -14,6 +14,6 @@
         "music": "happy_birthday.mp3",
         "audio_offset_ms": 1200,
         "dmx_offset_ms": 0,
-        "volume": 200
+        "volume": 100
     }
 }

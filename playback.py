@@ -5,7 +5,7 @@ import threading
 
 import serial
 from serial.tools import list_ports
-import vlc
+from mpv import MPV
 
 
 # =========================
@@ -52,15 +52,13 @@ class PlaybackController:
 
         self.loaded_records = []
 
-        self.vlc_instance = vlc.Instance(
-            "--aout=alsa",
-            "--audio-time-stretch",
-            "--file-caching=2000",
-            "--network-caching=2000",
-            "--disc-caching=2000",
-            "--no-video"
+        self.audio_player = MPV(
+            video=False,
+            audio_display=False,
+            cache=False,
+            keep_open=True,
+            gapless_audio="yes"
         )
-        self.audio_player = None
 
 
     # =========================
@@ -312,58 +310,22 @@ class PlaybackController:
     def start_music(self, music_file):
         if music_file is None:
             return
-
         print("Preparing audio...")
-
-        media = self.vlc_instance.media_new(
-            os.path.abspath(music_file)
-        )
-
-        self.audio_player = self.vlc_instance.media_player_new()
-
-        self.audio_player.set_media(media)
-
-        # Force VLC to load metadata and prepare decoder
-        self.audio_player.play()
-
-        time.sleep(0.2)
-
-        # Pause immediately after loading
-        self.audio_player.pause()
-
-        # Wait until VLC has initialized
-        timeout = time.time() + 5
-
-        while time.time() < timeout:
-            state = self.audio_player.get_state()
-
-            if state in (
-                vlc.State.Paused,
-                vlc.State.Playing
-            ):
-                break
-
-            time.sleep(0.05)
-
-        print(
-            "Audio preloaded"
-        )
-
+        self.audio_player.play(os.path.abspath(music_file))
+        self.audio_player.pause = True
+        print("Audio preloaded")
 
     def resume_music(self):
         if self.audio_player:
-            self.audio_player.play()
+            self.audio_player.pause = False
             print("Audio started")
 
     def stop_music(self):
         if self.audio_player:
             try:
                 self.audio_player.stop()
-                self.audio_player.release()
             except Exception:
                 pass
-
-            self.audio_player = None
 
 
 
