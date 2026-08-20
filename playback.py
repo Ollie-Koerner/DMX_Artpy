@@ -519,9 +519,12 @@ class PlaybackController:
         records = self.load_recording(
             recording_path
         )
-        music_file = self.find_music_file(
-            recording_path
-        )
+        if recording_path != "none":
+            music_file = self.find_music_file(
+                recording_path
+            )
+        else:
+            music_file = None
         sync_settings = self.get_sync_settings(
             recording_path
         )

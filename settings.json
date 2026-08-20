@@ -1,4 +1,13 @@
 {
+    "devil_inside": {
+        "titel": "Devil Inside",
+        "description": "INXS | 1988",
+        "music": "devil_inside.mp3",
+        "audio_offset_ms": 5200,
+        "dmx_offset_ms": 0,
+        "volume": 100
+    },
+
     "disco_inferno": {
         "titel": "Disco Inferno",
         "description": "The Trammps | 1976",
@@ -15,5 +24,14 @@
         "audio_offset_ms": 1200,
         "dmx_offset_ms": 0,
         "volume": 100
+    },
+
+    "smoke_shot": {
+        "titel": "Smoke Shot",
+        "description": "**Remove smokedetector**",
+        "music": "none",
+        "audio_offset_ms": 0,
+        "dmx_offset_ms": 0,
+        "volume": 0
     }
 }
