@@ -57,7 +57,9 @@ class PlaybackController:
             audio_display=False,
             cache=False,
             keep_open=True,
-            gapless_audio="yes"
+            gapless_audio="yes",
+            ao="alsa",
+            audio_device="alsa/plughw:2,0"
         )
 
 
