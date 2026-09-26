@@ -1,4 +1,13 @@
 {
+    "conga": {
+        "titel": "Conga",
+        "description": "Gloria Estefan | 1985",
+        "music": "conga.mp3",
+        "audio_offset_ms": 4300,
+        "dmx_offset_ms": 0,
+        "volume": 100
+    },
+    
     "devil_inside": {
         "titel": "Devil Inside",
         "description": "INXS | 1988",
@@ -26,9 +35,20 @@
         "volume": 100
     },
 
+    "vogue": {
+        "titel": "Vogue",
+        "description": "Madonna | 1990",
+        "music": "vogue.mp3",
+        "audio_offset_ms": 3100,
+        "dmx_offset_ms": 0,
+        "volume": 100
+    },
+
+
+
     "smoke_shot": {
         "titel": "Smoke Shot",
-        "description": "**Remove smokedetector**",
+        "description": "**Remove smoke detector**",
         "music": "none",
         "audio_offset_ms": 0,
         "dmx_offset_ms": 0,
