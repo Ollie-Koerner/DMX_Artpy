@@ -21,9 +21,9 @@
         "titel": "Disco Inferno",
         "description": "The Trammps | 1976",
         "music": "disco_inferno.mp3",
-        "audio_offset_ms": 14300,
+        "audio_offset_ms": 3100,
         "dmx_offset_ms": 0,
-        "volume": 100
+        "volume": 65
     },
 
     "happy_birthday": {
