@@ -44,6 +44,15 @@
         "volume": 100
     },
 
+    "yeah": {
+        "titel": "Yeah",
+        "description": "Usher | 2004",
+        "music": "yeah.mp3",
+        "audio_offset_ms": 3500,
+        "dmx_offset_ms": 0,
+        "volume": 100
+    },
+
 
 
     "smoke_shot": {
