@@ -1,7 +1,8 @@
 # DMX_Artpy
+A program to playback theater lights with pre-recorded artnet signals.
 
-### Recorder.py
-Records artnet signals.
+### app.py
+Control website.
 
-### Player.py
-Playback recorded artnet signals.
+### playback.py
+Backend: runs DMX, artnet, recordings and sound.
